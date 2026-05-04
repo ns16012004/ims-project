@@ -1,0 +1,51 @@
+[
+  {
+    "component_id": "RDBMS_PRIMARY",
+    "component_type": "RDBMS",
+    "signal_type": "CONNECTION_REFUSED",
+    "message": "Primary database refused connection — failover not initiated",
+    "metadata": { "host": "db-primary-01", "port": 5432, "error_code": "ECONNREFUSED" }
+  },
+  {
+    "component_id": "RDBMS_PRIMARY",
+    "component_type": "RDBMS",
+    "signal_type": "TIMEOUT",
+    "message": "DB query timeout after 30s — connection pool exhausted",
+    "metadata": { "query": "SELECT * FROM orders", "timeout_ms": 30000 }
+  },
+  {
+    "component_id": "MCP_HOST_01",
+    "component_type": "MCP_HOST",
+    "signal_type": "LATENCY_SPIKE",
+    "message": "MCP host p99 latency 850ms — SLA breach",
+    "metadata": { "p99_ms": 850, "sla_ms": 200 }
+  },
+  {
+    "component_id": "CACHE_CLUSTER_01",
+    "component_type": "CACHE",
+    "signal_type": "HEALTH_FAIL",
+    "message": "Redis cache node 2 health check failed — eviction storm",
+    "metadata": { "node": 2, "evicted_keys": 15000 }
+  },
+  {
+    "component_id": "API_GATEWAY_01",
+    "component_type": "API",
+    "signal_type": "ERROR",
+    "message": "API gateway returning 503 — downstream DB unavailable",
+    "metadata": { "status_code": 503, "endpoint": "/v1/orders" }
+  },
+  {
+    "component_id": "ASYNC_QUEUE_MAIN",
+    "component_type": "ASYNC_QUEUE",
+    "signal_type": "ERROR",
+    "message": "Queue consumer crash loop — DB write failures",
+    "metadata": { "consumer_id": "order-processor-01", "crash_count": 5 }
+  },
+  {
+    "component_id": "NOSQL_STORE_01",
+    "component_type": "NOSQL",
+    "signal_type": "LATENCY_SPIKE",
+    "message": "MongoDB write latency 2000ms — secondary lagging",
+    "metadata": { "operation": "insertOne", "latency_ms": 2000 }
+  }
+]
